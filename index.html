@@ -4,7 +4,18 @@
 <head>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>Trainer Card: 진주아빠</title>
+	<title>Pokemon Master: 진주아빠</title>
+	<meta name="description" content="진주아빠의 포켓몬 마스터 카드">
+	<meta name="keywords" content="포켓몬, 포켓몬 마스터, 진주아빠, 포켓몬 카드, 포켓몬 카드 만들기">
+	<meta name="author" content="진주아빠">
+
+	<!-- Open Graph / Facebook / Kakao -->
+	<meta property="og:type" content="website">
+	<meta property="og:title" content="Pokemon Master: 진주아빠">
+	<meta property="og:description" content="진주아빠의 포켓몬 마스터 카드">
+	<meta property="og:image" content="./profile_rec.png">
+	<meta property="og:url" content="https://dindoo0524.github.io/pokemon">
+
 	<style>
 		@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap');
 
@@ -15,7 +26,7 @@
 			display: flex;
 			justify-content: center;
 			align-items: center;
-			min-height: 100vh;
+			min-height: 100svh;
 			margin: 0;
 			padding: 20px 0;
 			overflow: hidden;
@@ -25,11 +36,11 @@
 			width: 340px;
 			height: 580px;
 			border-radius: 20px;
-			overflow: hidden;
 			position: relative;
 			transform-style: preserve-3d;
 			animation: cardFloat 6s ease-in-out infinite;
 			cursor: pointer;
+			/* overflow: hidden 제거 */
 		}
 
 		.card::before {
@@ -63,7 +74,9 @@
 					rgba(200, 225, 235, 0.9) 80%,
 					rgba(190, 220, 230, 0.95) 100%);
 			position: relative;
+			border-radius: 20px;
 			overflow: hidden;
+			/* card-inner에 border-radius와 overflow 적용 */
 		}
 
 		.card-inner::before {
@@ -87,35 +100,65 @@
 			right: 0;
 			bottom: 0;
 			background:
-				conic-gradient(from 0deg at 25% 25%,
-					transparent 0deg, rgba(255, 0, 150, 0.15) 60deg, transparent 120deg,
-					transparent 180deg, rgba(0, 255, 255, 0.15) 240deg, transparent 300deg),
-				conic-gradient(from 120deg at 75% 75%,
-					transparent 0deg, rgba(255, 255, 0, 0.15) 60deg, transparent 120deg,
-					transparent 180deg, rgba(255, 0, 255, 0.15) 240deg, transparent 300deg),
-				radial-gradient(circle at 50% 50%,
-					transparent 40%, rgba(255, 255, 255, 0.1) 60%, transparent 80%);
-			background-size: 400% 400%, 400% 400%, 100% 100%;
-			animation: hologram 8s linear infinite, holoShift 6s ease-in-out infinite;
+				radial-gradient(ellipse 80px 60px at 30% 20%, 
+					rgba(255, 255, 255, 0.08) 0%, transparent 70%),
+				radial-gradient(ellipse 90px 70px at 70% 30%, 
+					rgba(255, 255, 255, 0.06) 0%, transparent 70%),
+				radial-gradient(ellipse 70px 50px at 20% 60%, 
+					rgba(255, 255, 255, 0.04) 0%, transparent 70%),
+				radial-gradient(ellipse 85px 65px at 80% 70%, 
+					rgba(255, 255, 255, 0.06) 0%, transparent 70%),
+				radial-gradient(ellipse 75px 55px at 50% 90%, 
+					rgba(255, 255, 255, 0.05) 0%, transparent 70%);
+			background-size: 100% 100%;
+			animation: holoSimple 4s ease-in-out infinite;
 			pointer-events: none;
-			mix-blend-mode: overlay;
+			border-radius: 20px;
+			opacity: 0.7;
 		}
+		
+		/* @media screen and (max-width: 768px) {
+			.holographic-overlay {
+				background:
+					radial-gradient(ellipse 60px 45px at 30% 30%, 
+						rgba(255, 255, 255, 0.06) 0%, transparent 70%),
+					radial-gradient(ellipse 70px 50px at 70% 70%, 
+						rgba(255, 255, 255, 0.05) 0%, transparent 70%),
+					linear-gradient(45deg,
+						transparent 0%, rgba(255, 255, 255, 0.03) 50%, transparent 100%);
+				background-size: 100% 100%;
+				animation: holoMobile 3s ease-in-out infinite;
+				opacity: 0.6;
+			}
+		} */
 
 		.header {
+			height: 60px;
 			background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
 			color: white;
 			padding: 20px;
+			box-sizing: border-box;
 			position: relative;
 			text-align: center;
 			box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+			background-clip: border-box;
+			-webkit-background-clip: border-box;
+			border-top-left-radius: 20px;
+			border-top-right-radius: 20px;
+			/* 명시적으로 상단 border-radius 설정 */
 		}
 
 		.header h1 {
 			margin: 0;
-			font-size: 20px;
+			font-size: 16px;
 			font-weight: 900;
-			text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
-			animation: textGlow 2s ease-in-out infinite alternate;
+
+			/* 그라데이션 텍스트를 위한 코드 */
+			background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+			-webkit-background-clip: text;
+			background-clip: text;
+			color: transparent;
+			text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 		}
 
 		.profile {
@@ -123,7 +166,7 @@
 			text-align: center;
 			position: relative;
 			overflow-y: auto;
-			max-height: 390px;
+			max-height: 400px;
 		}
 
 		.avatar-container {
@@ -141,10 +184,11 @@
 			background:
 				linear-gradient(45deg, #ff0081 0%, #ff8c00 16.66%, #40e0d0 33.33%, #9400d3 50%, #ff0081 66.66%, #ff8c00 83.33%, #40e0d0 100%),
 				linear-gradient(-45deg, #40e0d0 0%, #9400d3 25%, #ff0081 50%, #ff8c00 75%, #40e0d0 100%);
-			background-size: 400% 400%, 400% 400%;
-			border-radius: 35px;
+			background-size: 200% 200%, 200% 200%;
+			border-radius: 20px;
 			animation: rectGlow 4s linear infinite;
-			filter: blur(12px);
+			mix-blend-mode: overlay;
+			opacity: 0.5;
 		}
 
 		.placeholder-img {
@@ -245,6 +289,8 @@
 		}
 
 		.footer {
+			height: 60px;
+			box-sizing: border-box;
 			background: linear-gradient(135deg, #ffd700 0%, #ffed4e 50%, #f9ca24 100%);
 			padding: 20px;
 			font-weight: 900;
@@ -258,10 +304,46 @@
 			align-items: center;
 			justify-content: center;
 			gap: 4px;
+			background-clip: border-box;
+			border-bottom-left-radius: 20px;
+			border-bottom-right-radius: 20px;
+			/* 명시적으로 하단 border-radius 설정 */
 		}
 
 		.footer-icon {
-			width: 40px;
+			width: 30px;
+		}
+
+		/* 모바일 호환성을 위한 추가 CSS */
+		@media screen and (max-width: 480px) {
+			.card {
+				-webkit-border-radius: 20px;
+				-moz-border-radius: 20px;
+			}
+
+			.card-inner {
+				-webkit-border-radius: 20px;
+				-moz-border-radius: 20px;
+			}
+
+			.header {
+				-webkit-border-top-left-radius: 20px;
+				-webkit-border-top-right-radius: 20px;
+				-moz-border-radius-topleft: 20px;
+				-moz-border-radius-topright: 20px;
+			}
+
+			.footer {
+				-webkit-border-bottom-left-radius: 20px;
+				-webkit-border-bottom-right-radius: 20px;
+				-moz-border-radius-bottomleft: 20px;
+				-moz-border-radius-bottomright: 20px;
+			}
+
+			.holographic-overlay {
+				-webkit-border-radius: 20px;
+				-moz-border-radius: 20px;
+			}
 		}
 
 		@keyframes infoShine {
@@ -318,48 +400,6 @@
 			}
 		}
 
-		@keyframes hologram {
-			0% {
-				background-position: 0% 0%, 100% 100%, 50% 50%;
-			}
-
-			25% {
-				background-position: 50% 25%, 75% 50%, 50% 50%;
-			}
-
-			50% {
-				background-position: 100% 50%, 50% 25%, 50% 50%;
-			}
-
-			75% {
-				background-position: 75% 75%, 25% 75%, 50% 50%;
-			}
-
-			100% {
-				background-position: 0% 0%, 100% 100%, 50% 50%;
-			}
-		}
-
-		@keyframes holoShift {
-
-			0%,
-			100% {
-				transform: translateX(0) translateY(0);
-			}
-
-			25% {
-				transform: translateX(2px) translateY(-1px);
-			}
-
-			50% {
-				transform: translateX(-1px) translateY(2px);
-			}
-
-			75% {
-				transform: translateX(-2px) translateY(-1px);
-			}
-		}
-
 		@keyframes textGlow {
 			0% {
 				text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
@@ -392,6 +432,36 @@
 			}
 		}
 
+		@keyframes holoSimple {
+			0%, 100% {
+				background-position: 0% 0%, 100% 100%, 0% 100%, 100% 0%, 50% 50%, 0% 0%;
+				opacity: 0.8;
+			}
+			25% {
+				background-position: 25% 25%, 75% 75%, 25% 75%, 75% 25%, 25% 75%, 25% 25%;
+				opacity: 0.6;
+			}
+			50% {
+				background-position: 50% 50%, 50% 50%, 50% 50%, 50% 50%, 0% 0%, 50% 50%;
+				opacity: 0.8;
+			}
+			75% {
+				background-position: 75% 75%, 25% 25%, 75% 25%, 25% 75%, 75% 25%, 75% 75%;
+				opacity: 0.6;
+			}
+		}
+
+		@keyframes holoMobile {
+			0%, 100% {
+				background-position: 0% 0%, 100% 100%, 0% 0%;
+				opacity: 0.6;
+			}
+			50% {
+				background-position: 100% 100%, 0% 0%, 100% 100%;
+				opacity: 0.4;
+			}
+		}
+
 		.card:hover {
 			transform: scale(1.05);
 			transition: transform 0.3s ease;
@@ -409,7 +479,7 @@
 			<div class="holographic-overlay"></div>
 
 			<div class="header">
-				<h1>🎖️ LEGENDARY TRAINER</h1>
+				<h1>LEGENDARY POKEMON MASTER</h1>
 			</div>
 
 			<div class="profile">
@@ -507,26 +577,11 @@
 						</svg>
 						<strong>시작일 :</strong> 2017-05-20
 					</p>
-					<!-- <p>
-						<svg class="stat-icon" viewBox="0 0 24 24" fill="none">
-							<defs>
-								<linearGradient id="teamGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-									<stop offset="0%" style="stop-color:#FF4757" />
-									<stop offset="100%" style="stop-color:#C44569" />
-								</linearGradient>
-							</defs>
-							<circle cx="12" cy="12" r="10" fill="url(#teamGrad)" stroke="#8B0000" stroke-width="2" />
-							<path d="M8 12L11 15L16 9" stroke="#FFF" stroke-width="3" fill="none" />
-						</svg>
-						<strong>Team :</strong> Valor
-					</p> -->
 				</div>
 				<div class="qr">
 					<img src="./qr.jpeg" class="placeholder-qr"/>
 				</div>
 			</div>
-
-
 
 			<div class="footer">
 				<img src="./pikachu.png" alt="pikachu" class="footer-icon">
